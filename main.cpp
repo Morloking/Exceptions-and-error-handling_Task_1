@@ -4,7 +4,7 @@
 
 #include <Windows.h>
 
-class BadLength :
+class BadLength : //РґР»СЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ СЃС‚РёР»СЊ РєРѕРґСѓ СЂРµС€РёР» РїРµСЂРµРЅР°Р·РІР°С‚СЊ, СЃСѓС‚СЊ РЅРµ РјРµРЅСЏРµС‚
 	public std::exception {
 public:
 	explicit BadLength(const std::string& error) : message(error) {}
@@ -14,7 +14,7 @@ private:
 };
 
 int function(std::string str, int forbiddenLength) {
-	if (str.size() == forbiddenLength) { throw BadLength("Вы ввели слово запретной длины! До свидания\n"); }
+	if (str.size() == forbiddenLength) { throw BadLength("Р’С‹ РІРІРµР»Рё СЃР»РѕРІРѕ Р·Р°РїСЂРµС‚РЅРѕР№ РґР»РёРЅС‹! Р”Рѕ СЃРІРёРґР°РЅРёСЏ\n"); }
 	else { return static_cast<int>(str.length()); }
 }
 
@@ -23,15 +23,15 @@ int main() {
 	SetConsoleOutputCP(1251);
 	int forbiddenLength{ 0 }, currLength{ 0 };
 	std::string word{ "" };
-	std::cout << "Введите запретную длину: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ Р·Р°РїСЂРµС‚РЅСѓСЋ РґР»РёРЅСѓ: ";
 	std::cin >> forbiddenLength;
 
 	try {
 		while (true) {
-			std::cout << "Введите слово: ";
+			std::cout << "Р’РІРµРґРёС‚Рµ СЃР»РѕРІРѕ: ";
 			std::cin >> word;
 			currLength = function(word, forbiddenLength);
-			std::cout << "Длина слова \"" << word << "\" равна " << currLength << "\n";
+			std::cout << "Р”Р»РёРЅР° СЃР»РѕРІР° \"" << word << "\" СЂР°РІРЅР° " << currLength << "\n";
 		}
 	}
 	catch (BadLength& ex) {
