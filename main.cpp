@@ -4,7 +4,7 @@
 
 #include <Windows.h>
 
-class BadLength : //для соответствия стиль коду решил переназвать, суть не меняет
+class BadLength : //для соответствия код стилю решил переназвать, суть не меняет
 	public std::exception {
 public:
 	explicit BadLength(const std::string& error) : message(error) {}
